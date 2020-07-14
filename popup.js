@@ -11,8 +11,8 @@ const DISABLE = "Disable"
 
 const onClick = () => {
     let checked = (toggleButton.innerHTML === DISABLE)
-    if (checked) toggleButton.innerHTML = DISABLE
-    else toggleButton.innerHTML = ENABLE
+    if (checked) toggleButton.innerHTML = ENABLE
+    else toggleButton.innerHTML = DISABLE
     checked = !checked
     chrome.tabs.query(activeTab, tabs => {
         chrome.tabs.sendMessage(tabs[0].id, checked)

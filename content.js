@@ -16,7 +16,6 @@ const startObserving = () => {
 
 // fool proof way to start observing
 const checkReadyAndObserve = () => {
-    console.log("listening")
     if (document.readyState !== "loading") startObserving()
     else document.addEventListener("DOMContentLoaded", startObserving)
 }
@@ -28,8 +27,6 @@ chrome.storage.sync.get({ "isSkipEnabled": true }, data => {
 
 // if user changes preference modify storage and take effect immediately
 chrome.runtime.onMessage.addListener(message => {
-    console.log(message)
-    alert(message)
     chrome.storage.sync.set({ isSkipEnabled: message }, () => {
         if (message) checkReadyAndObserve()
         else observer.disconnect()
